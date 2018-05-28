@@ -1,0 +1,51 @@
+.wraper {
+  background: #272727;
+}
+
+.tag {
+  margin: 10px auto;
+}
+
+.title {
+  font-size: 28px;
+  color: #fff;
+  text-align: center;
+  padding-bottom: 70px;
+}
+
+.items {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.photo {
+  width: 374px;
+  height: 374px;
+  transition: 400ms;
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.photos {
+  position: relative;
+  overflow: hidden;
+  .item {
+    float: left;
+    margin-bottom: 40px;
+  }
+  .item-right {
+    margin-left: 40px;
+  }
+}
+
+.photo-big {
+  width: 786px;
+  height: 786px;
+  transition: 400ms;
+  &:hover {
+    transform: scale(1.02);
+  }
+}

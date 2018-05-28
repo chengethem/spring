@@ -1,0 +1,52 @@
+.item {
+  display: inline-block;
+  width: 33.3%;
+  position: relative;
+  padding-right: 65px;
+  margin-top: 40px;
+  vertical-align: top;
+}
+
+.item-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+  float: left;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.item-text {
+  margin-left: 130px;
+}
+
+.item-name {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.item-name--text {
+  font-size: 18px;
+  color: #333;
+}
+
+.item-title {
+  font-size: 14px;
+  color: #b2804d;
+  padding-left: 10px;
+}
+
+.item-desc {
+  font-size: 14px;
+  line-height: 21px;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
+}

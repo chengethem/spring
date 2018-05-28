@@ -1,0 +1,19 @@
+.contianer {
+  position: relative;
+  overflow: hidden;
+  font-size: 0;
+}
+
+.left {
+  display: inline-block;
+  width: 900px;
+  box-sizing: border-box;
+  padding-right: 60px;
+  vertical-align: top;
+}
+
+.right {
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+}

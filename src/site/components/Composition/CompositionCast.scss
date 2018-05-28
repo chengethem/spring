@@ -1,0 +1,45 @@
+$item_width:110px;
+.title {
+  font-size: 28px;
+  color: #333333;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #b2804d;
+}
+
+.item {
+  width: $item_width;
+  float: left;
+  margin-right: 10px;
+  margin-top: 20px;
+  &:nth-child(2n) {
+    margin-right: 0;
+  }
+}
+
+.avatar {
+  width: $item_width;
+  height: $item_width;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+}
+
+.name {
+  font-size: 16px;
+  color: #1a1a1a;
+  text-align: center;
+  line-height: 28px;
+}
+
+.acting {
+  font-size: 14px;
+  color: #999999;
+  text-align: center;
+  width: $item_width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

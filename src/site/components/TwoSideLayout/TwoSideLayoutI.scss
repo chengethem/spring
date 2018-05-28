@@ -1,0 +1,27 @@
+.wraper {
+  background-color: #f9f9f9;
+}
+
+.container {
+  width: 1200px;
+  overflow: hidden;
+  font-size: 0;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 90px;
+}
+
+.left {
+  display: inline-block;
+  box-sizing: border-box;
+  padding-right: 60px;
+  vertical-align: top;
+  width: 405px;
+}
+
+.right {
+  display: inline-block;
+  vertical-align: top;
+  width: 795px;
+}

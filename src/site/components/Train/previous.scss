@@ -1,0 +1,91 @@
+.title {
+  font-size: 28px;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #b2804d;
+  line-height: 24px;
+}
+
+.list {
+  position: relative;
+  overflow: hidden;
+}
+
+.item {
+  width: 144px;
+  float: left;
+}
+
+.item:nth-child(2n) {
+  margin-left: 12px;
+}
+
+.avatar {
+  width: 144px;
+  height: 138px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+}
+
+.name {
+  font-size: 16px;
+  color: #1a1a1a;
+  text-align: center;
+  line-height: 28px;
+}
+
+.subname {
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  line-height: 26px;
+}
+
+.item {
+  margin-top: 20px;
+}
+
+.info {
+  width: 100%;
+  border: 1px solid #e8e8e8;
+  padding: 20px;
+}
+
+.info-content {
+  font-size: 14px;
+  color: #666;
+}
+
+.link {
+  font-size: 14px;
+  color: #b2804d;
+  padding-bottom: .1em;
+  border-bottom: 1px solid #b2804d;
+}
+
+.info {
+  position: relative;
+  margin-bottom: 52px;
+}
+
+.info-icon {
+  background-image: url('../../../assets/icon/hint.jpg');
+  width: 51px;
+  height: 54px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+@media (device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .info-icon {
+    background-image: url('../../../assets/icon/hint_2x.jpg');
+  }
+}

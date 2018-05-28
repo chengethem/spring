@@ -1,0 +1,28 @@
+.item {
+  width: 224px;
+  height: 224px;
+  display: inline-block;
+  background: #f4f4f4;
+  vertical-align: top;
+  position: relative;
+  margin-top: 20px;
+}
+
+.item:nth-child(5n+2) {
+  background: #fafbfc;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.item:nth-child(5n+4) {
+  background: #fafbfc;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.item-pic {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: scale(.5) translate3d(-100%, -100%, 0);
+}

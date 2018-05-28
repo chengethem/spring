@@ -1,0 +1,32 @@
+.container {
+  background-color: #000;
+  width: 100%;
+  height: 232px;
+  background-image: url('../../../assets/more_bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .container {
+    background-image: url('../../../assets/more_bg_2x.jpg');
+  }
+}
+
+.title {
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 35px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #fff;
+}
