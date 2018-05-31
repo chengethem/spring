@@ -32,8 +32,22 @@ class editSectionForm extends Component {
     const { form } = this.props;
     let counts = form.getFieldValue(`list-item-${field}`) || [0];
     counts = counts.concat(counts.length);
+    console.info(`addListItem__list-item-${field}`, counts);
     form.setFieldsValue({
       [`list-item-${field}`]: counts
+    });
+  }
+  removeListField = (field, k) => {
+    const { form } = this.props;
+    const keys = form.getFieldValue(`list-item-${field}`);
+    console.info(`removeListField___list-item-${field}`, );
+    console.info('removeListField_', field, 'k', k, 'keys', keys);
+    if (keys.length === 1) {
+      return;
+    }
+
+    form.setFieldsValue({
+      [`list-item-${field}`]: keys.filter((key, idx) => idx !== k)
     });
   }
 
@@ -60,7 +74,7 @@ class editSectionForm extends Component {
       item = section.value[index];
     }
 
-    const fieldItems = fields && fields.map((field, idx) => {
+    const fieldItems = fields && fields.map((field, index) => {
       // if (!field.caption) {
       //   return;
       // }
@@ -96,12 +110,20 @@ class editSectionForm extends Component {
           }
           getFieldDecorator(`list-item-${field.name}`, { initialValue: item && item[field.name] || [0] });
           const listItems = getFieldValue(`list-item-${field.name}`);
-          console.info('getFieldDecorator_listItems', listItems);
-          const listEls = listItems.map((item, idx) => {
+          console.info('getFieldDecorator_listItems', listItems, field.name);
+          const listEls = listItems && listItems.map((item, idx) => {
             const listEl = _getListEl(item, idx);
             return (
               <div className={styles.card}>
                 {listEl}
+                {listItems.length > 1 ? (
+                  <Icon
+                    className={`${styles['dynamic-delete-button']} ${styles.remove}`}
+                    type="minus-circle-o"
+                    disabled={listItems.length === 1}
+                    onClick={() => this.removeListField(field.name, idx)}
+                  />
+                ) : null}
               </div>
             );
           });
@@ -125,7 +147,7 @@ class editSectionForm extends Component {
         <FormItem
           {...formItemLayout}
           label={field.caption}
-          key={idx}
+          key={index}
         >
           {tag}
         </FormItem>

@@ -12,21 +12,21 @@ router.post('/api/sections', (ctx, next) => {
   const { section } = ctx.request.body;
   const { caption, name, isList, fields } = section;
   const new_section = Object.assign({}, { caption, name, isList, fields: [] });
-  fields.length > 0 && fields.map((i) => {
+  fields.length > 0 && fields.map((i,index) => {
     const field = {
-      caption: section[`caption-${i}`],
-      name: section[`name-${i}`],
-      type: section[`type-${i}`],
-      placeholder: section[`placeholder-${i}`]
+      caption: section[`caption-${index}`],
+      name: section[`name-${index}`],
+      type: section[`type-${index}`],
+      placeholder: section[`placeholder-${index}`]
     };
-    if (section[`type-${i}`] === 'List') {
-      const fieldList = section[`field-${i}-list`];
+    if (section[`type-${index}`] === 'List') {
+      const fieldList = section[`field-${index}-list`];
       field.list = [];
       fieldList.map((idx) => {
         field.list.push({
-          name: section[`name-${i}-${idx}`],
-          caption: section[`caption-${i}-${idx}`],
-          placeholder: section[`placeholder-${i}-${idx}`],
+          name: section[`name-${index}-${idx}`],
+          caption: section[`caption-${index}-${idx}`],
+          placeholder: section[`placeholder-${index}-${idx}`],
         });
       });
     }

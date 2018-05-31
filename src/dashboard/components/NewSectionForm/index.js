@@ -19,12 +19,12 @@ class NewSectionForm extends Component {
   remove = (k) => {
     const { form } = this.props;
     const keys = form.getFieldValue('fields');
+    console.info('remove__', keys, k);
     if (keys.length === 1) {
       return;
     }
-
     form.setFieldsValue({
-      fields: keys.filter(key => key !== k)
+      fields: keys.filter((key, index) => index !== k)
     });
   }
 
@@ -37,10 +37,23 @@ class NewSectionForm extends Component {
       fields: nextKeys
     });
   }
+  removeListField = (field, k) => {
+    const { form } = this.props;
+    const keys = form.getFieldValue(`field-${field}-list`);
+    console.info('removeListField_', field, 'k', k, 'keys', keys);
+    if (keys.length === 1) {
+      return;
+    }
+
+    form.setFieldsValue({
+      [`field-${field}-list`]: keys.filter((key, idx) => idx !== k)
+    });
+  }
   addListField = (field) => {
     const { form } = this.props;
     const keys = form.getFieldValue(`field-${field}-list`);
     const nextKeys = keys.concat(keys.length);
+    console.info(`field-${field}-list`, nextKeys);
     form.setFieldsValue({
       [`field-${field}-list`]: nextKeys
     });
@@ -74,6 +87,11 @@ class NewSectionForm extends Component {
   showModal = (e) => {
     this.setState({
       visible: true
+    });
+  }
+  handleCancel = (e) => {
+    this.setState({
+      visible: false
     });
   }
   removeSection = (e) => {
@@ -111,7 +129,7 @@ class NewSectionForm extends Component {
       wrapperCol: { span: 14, offset: 6 },
     };
     const initial_fields = fieldList && fieldList.length > 0 ? fieldList : [0];
-    uuid = fieldList && fieldList.length || 0;
+    uuid = uuid > 0 ? uuid : fieldList && fieldList.length || 0;
     getFieldDecorator('fields', { initialValue: initial_fields });
     const fields = getFieldValue('fields');
     const fieldsItem = fields.map((field, index) => {
@@ -154,11 +172,18 @@ class NewSectionForm extends Component {
                   rules: [{ message: '请输入字段解释' }]
                 })(<Input />)}
               </FormItem>
+              {fieldsListItems.length > 1 ? (
+                <Icon
+                  className={styles['dynamic-delete-button']}
+                  type="minus-circle-o"
+                  disabled={fieldsListItems.length === 1}
+                  onClick={() => this.removeListField(index, idx)}
+                />
+              ) : null}
             </div>
           )
         });
       }
-      console.info('fieldsListItem_', isList_field);
       return (
         <div className={styles.card} key={index}>
           <FormItem

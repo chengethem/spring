@@ -127,7 +127,7 @@ class EditSectionSchema extends Component {
     const initial_fields = fieldList.map((v, idx) => {
       return idx;
     });
-    uuid = fieldList.length || 0;
+    uuid = uuid > 0 ? uuid : fieldList.length || 0;
     console.info('initial_fields~~', initial_fields);
     getFieldDecorator('fields', { initialValue: initial_fields || [0] });
     const fields = getFieldValue('fields');
