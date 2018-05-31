@@ -57,6 +57,9 @@ router.patch('/api/section', (ctx, next) => {
         const fieldList = section[`field-${i}-list`];
         field.list = [];
         fieldList && fieldList.map((item, idx) => {
+          if (!section[`name-${i}-${idx}`]) {
+            return;
+          }
           field.list.push({
             name: section[`name-${i}-${idx}`],
             caption: section[`caption-${i}-${idx}`],
@@ -67,27 +70,29 @@ router.patch('/api/section', (ctx, next) => {
       return field;
     });
   }
-  sectionClone.value = sectionClone.value && sectionClone.value.map(item => {
-    sectionClone.fields.map(field => {
-      let list;
-      if (field.type === 'List') {
-        list = item[`list-item-${field.name}`];
-        delete item[`list-item-${field.name}`];
-        item[field.name] = typeof item[field.name] === 'object' ? item[field.name] : [];
-        list && list.map((listItem, idx) => {
-          const fieldItems = field.list;
-          const doc = {};
-          fieldItems && fieldItems.map((fieldItem) => {
-            doc[fieldItem.name] = item[`${field.name}-${fieldItem.name}-${idx}`];
-            delete item[`${field.name}-${fieldItem.name}-${idx}`];
+  if (sectionClone.value) {
+    sectionClone.value = sectionClone.value.map(item => {
+      sectionClone.fields.map(field => {
+        let list;
+        if (field.type === 'List') {
+          list = item[`list-item-${field.name}`];
+          delete item[`list-item-${field.name}`];
+          item[field.name] = typeof item[field.name] === 'object' ? item[field.name] : [];
+          list && list.map((listItem, idx) => {
+            const fieldItems = field.list;
+            const doc = {};
+            fieldItems && fieldItems.map((fieldItem) => {
+              doc[fieldItem.name] = item[`${field.name}-${fieldItem.name}-${idx}`];
+              delete item[`${field.name}-${fieldItem.name}-${idx}`];
+            });
+            item[field.name].push(doc);
           });
-          item[field.name].push(doc);
-        });
-      }
+        }
+      });
+      console.info('sectionClone', item);
+      return item;
     });
-    console.info('sectionClone', item);
-    return item;
-  });
+  }
   console.info('sectionClone__', sectionClone);
   return Section.findOneAndUpdate({ name: section.name }, { $set: sectionClone }).then(section => {
     console.info('sectionClone__||', section);

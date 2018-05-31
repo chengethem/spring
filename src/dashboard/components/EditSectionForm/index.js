@@ -61,6 +61,9 @@ class editSectionForm extends Component {
     }
 
     const fieldItems = fields && fields.map((field, idx) => {
+      // if (!field.caption) {
+      //   return;
+      // }
       let tag;
       switch (field.type) {
         case 'String':
@@ -73,6 +76,9 @@ class editSectionForm extends Component {
           const fieldsList = field.list || [];
           const _getListEl = (item, idx) => {
             return fieldsList && fieldsList.map((list, key) => {
+              if (!list.caption) {
+                return;
+              }
               return (
                 <FormItem
                   {...formItemLayout}
