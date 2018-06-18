@@ -4,9 +4,9 @@ import MainLayout from '../components/MainLayoutI';
 import TwoSideLayoutI from '../components/TwoSideLayout/TwoSideLayoutI';
 import NavigationBar from '../components/NavigationBar';
 import DubberInfo from '../components/Dubber/DubberInfo';
-// import CompositionCast from '../components/Dubber/CompositionCast';
 import Footer from '../components/Footer';
 import DubberCompositions from '../components/Dubber/DubberCompositions';
+import querystring from 'querystring';
 
 function findByName(name) {
   return (item) => {
@@ -20,15 +20,22 @@ function getProperty(obj, key) {
   }
   return obj[key] || '';
 }
-class CompositionPage extends Component {
+class DubberPage extends Component {
   render() {
     const { location, list, loading } = this.props;
     const navs = getProperty(list, 'navigation').value;
     const pix = getProperty(list, 'slider').value;
     const news = getProperty(list, 'news').value;
     const dubbers = getProperty(list, 'dubbers').value;
-    const left = <DubberInfo />;
-    const right = <DubberCompositions />;
+    const query = querystring.parse(location.search.split('?')[1]);
+
+    if (!dubbers) {
+      return '';
+    }
+    const dubber = dubbers[query.index];
+    console.info('__dubber', dubbers, dubber, query);
+    const left = <DubberInfo dubber={dubber} />;
+    const right = <DubberCompositions compositions={dubber.compositions} />;
 
     const sections = [
       <NavigationBar fixed={true} location={location} navs={navs} />,
@@ -50,4 +57,4 @@ function mapStateToProps(state) {
     page,
   };
 }
-export default connect(mapStateToProps)(CompositionPage);
+export default connect(mapStateToProps)(DubberPage);

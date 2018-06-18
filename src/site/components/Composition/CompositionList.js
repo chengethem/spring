@@ -5,64 +5,44 @@ import cover from '../../../assets/demo/cover1_2x.jpg';
 
 class CompositionList extends Component {
   render() {
+    const TABS = {
+      animation: '动画',
+      ad: '广告',
+      movie: '电影'
+    };
+    const categories = ['animation', 'ad', 'movie'];
+    const { current_category, compositions } = this.props;
+    const show_compositions = compositions.filter(composition => {
+      const composition_category = composition.category;
+      return TABS[current_category || 'animation'] === composition_category;
+    });
+    console.info('CompositionList_compositions', compositions, show_compositions);
+    const compositions_el = show_compositions.map((composition, index) => {
+      const cover_style = {
+        backgroundImage: `url(${composition.cover})`
+      }
+      const composition_index = compositions.findIndex((item) => {
+        return item.name === composition.name;
+      });
+      return (
+        <a href={`/composition?index=${composition_index}`} className={styles.item} key={index}>
+          {/* <img className={styles.cover} src={composition.cover} alt={composition.title} /> */}
+          <div className={styles.cover} style={cover_style}></div>
+          <div className={styles.content}>
+            <div className={styles.title}>{composition.title}</div>
+            <div className={styles.desc}>{composition.desc}</div>
+            <div className={styles.info}>
+              <img className={styles.icon} src={icon} alt="" />
+              <span className={styles.date}>{composition.publish_date}</span>
+            </div>
+          </div>
+        </a>
+      );
+    });
     return (
       <div className={styles.container}>
         <div className={styles.items}>
-          <div className={styles.item}>
-            <img className={styles.cover} src={cover} alt="" />
-            <div className={styles.content}>
-              <div className={styles.title}>暴雪魔兽世界资料片“大地的裂变”</div>
-              <div className={styles.desc}>受上古之神操控的黑龙死亡之翼趁着英雄远征诺森德时突破了土元素位面，拉近了元素位面与艾泽拉斯的距离，巨大的灾难降临到艾泽拉斯大陆上，整块大陆都改变了外貌</div>
-              <div className={styles.info}>
-                <img className={styles.icon} src={icon} alt="" />
-                <span className={styles.date}>2018.06.01</span>
-              </div>
-            </div>
-          </div>
-          <div className={styles.item}>
-            <img className={styles.cover} src={cover} alt="" />
-            <div className={styles.content}>
-              <div className={styles.title}>暴雪魔兽世界资料片“大地的裂变”</div>
-              <div className={styles.desc}>受上古之神操控的黑龙死亡之翼趁着英雄远征诺森德时突破了土元素位面，拉近了元素位面与艾泽拉斯的距离，巨大的灾难降临到艾泽拉斯大陆上，整块大陆都改变了外貌</div>
-              <div className={styles.info}>
-                <img className={styles.icon} src={icon} alt="" />
-                <span className={styles.date}>2018.06.01</span>
-              </div>
-            </div>
-          </div>
-          <div className={styles.item}>
-            <img className={styles.cover} src={cover} alt="" />
-            <div className={styles.content}>
-              <div className={styles.title}>暴雪魔兽世界资料片“大地的裂变”</div>
-              <div className={styles.desc}>受上古之神操控的黑龙死亡之翼趁着英雄远征诺森德时突破了土元素位面，拉近了元素位面与艾泽拉斯的距离，巨大的灾难降临到艾泽拉斯大陆上，整块大陆都改变了外貌</div>
-              <div className={styles.info}>
-                <img className={styles.icon} src={icon} alt="" />
-                <span className={styles.date}>2018.06.01</span>
-              </div>
-            </div>
-          </div>
-          <div className={styles.item}>
-            <img className={styles.cover} src={cover} alt="" />
-            <div className={styles.content}>
-              <div className={styles.title}>暴雪魔兽世界资料片“大地的裂变”</div>
-              <div className={styles.desc}>受上古之神操控的黑龙死亡之翼趁着英雄远征诺森德时突破了土元素位面，拉近了元素位面与艾泽拉斯的距离，巨大的灾难降临到艾泽拉斯大陆上，整块大陆都改变了外貌</div>
-              <div className={styles.info}>
-                <img className={styles.icon} src={icon} alt="" />
-                <span className={styles.date}>2018.06.01</span>
-              </div>
-            </div>
-          </div>
-          <div className={styles.item}>
-            <img className={styles.cover} src={cover} alt="" />
-            <div className={styles.content}>
-              <div className={styles.title}>暴雪魔兽世界资料片“大地的裂变”</div>
-              <div className={styles.desc}>受上古之神操控的黑龙死亡之翼趁着英雄远征诺森德时突破了土元素位面，拉近了元素位面与艾泽拉斯的距离，巨大的灾难降临到艾泽拉斯大陆上，整块大陆都改变了外貌</div>
-              <div className={styles.info}>
-                <img className={styles.icon} src={icon} alt="" />
-                <span className={styles.date}>2018.06.01</span>
-              </div>
-            </div>
-          </div>
+          {compositions_el}
         </div>
       </div>
     );

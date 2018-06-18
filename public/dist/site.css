@@ -3005,6 +3005,13 @@ mark {
     padding: 0;
   }
 }
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   background-color: #fff; }
+
+a:hover {
+  color: #b2804d; }
+
+/*# sourceMappingURL=site.css.map*/

@@ -4,53 +4,43 @@ import styles from './DubberCompositions.scss';
 
 class DubberCompositions extends Component {
   render() {
-    const itemStyle = {
-      backgroundImage: 'url("http://oezn2ph4e.bkt.clouddn.com/xc.jpeg")'
-    };
-    const coverStyle = {
-      backgroundImage: 'url("https://img3.doubanio.com/view/photo/raw/public/p509221460.jpg")'
-    }
+    const { compositions } = this.props;
+    const categories = {};
 
+    compositions.map(composition => {
+      const category = composition.composition_classify;
+      if (!categories[category]) {
+        categories[category] = [];
+      }
+      return categories[category].push(composition);
+    });
+    const compositions_el = Object.keys(categories).map((category, index) => {
+      const list = categories[category];
+
+      const list_el = list.map((item, idx) => {
+        const coverStyle = {
+          backgroundImage: `url("${item.composition_cover}")`
+        };
+        return (
+          <div className={styles.item} key={idx}>
+            <div className={styles.cover} style={coverStyle}></div>
+            <div className={styles.name}>{item.composition_name}</div>
+            <a href={item.composition_link} target='_blank' className={styles['mask-link']}></a>
+          </div>
+        )
+      });
+      return (
+        <div className={styles.list} key={index}>
+          <div className={styles.title}>{category}</div>
+          <div className={styles.items}>
+            {list_el}
+          </div>
+        </div>
+      );
+    });
     return (
       <div className={styles.container}>
-        <div className={styles.list}>
-          <div className={styles.title}>电影混音、对白录音</div>
-          <div className={styles.items}>
-            <div className={styles.item}>
-              <div className={styles.cover} style={coverStyle}></div>
-              <div className={styles.name}>香港电影《前度》国语版对白录音</div>
-            </div>
-            <div className={styles.item}>
-              <div className={styles.cover} style={coverStyle}></div>
-              <div className={styles.name}>香港电影《前度》国语版对白录音</div>
-            </div><div className={styles.item}>
-              <div className={styles.cover} style={coverStyle}></div>
-              <div className={styles.name}>香港电影《前度》国语版对白录音</div>
-            </div><div className={styles.item}>
-              <div className={styles.cover} style={coverStyle}></div>
-              <div className={styles.name}>香港电影《前度》国语版对白录音</div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.list}>
-          <div className={styles.title}>电影混音、对白录音</div>
-          <div className={styles.items}>
-            <div className={styles.item}>
-              <div className={styles.cover} style={coverStyle}></div>
-              <div className={styles.name}>香港电影《前度》国语版对白录音</div>
-            </div>
-            <div className={styles.item}>
-              <div className={styles.cover} style={coverStyle}></div>
-              <div className={styles.name}>香港电影《前度》国语版对白录音</div>
-            </div><div className={styles.item}>
-              <div className={styles.cover} style={coverStyle}></div>
-              <div className={styles.name}>香港电影《前度》国语版对白录音</div>
-            </div><div className={styles.item}>
-              <div className={styles.cover} style={coverStyle}></div>
-              <div className={styles.name}>香港电影《前度》国语版对白录音</div>
-            </div>
-          </div>
-        </div>
+        {compositions_el}
       </div>
     );
   }

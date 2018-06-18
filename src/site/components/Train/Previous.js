@@ -17,7 +17,6 @@ class Previous extends Component {
           <div className={styles['info-icon']}></div>
         </div>
         <div className={styles.title}>往期优秀学员</div>
-        {/* <div className={styles.subtitle}>往期优秀学员</div> */}
         <div className={styles.list}>
           <div className={styles.item}>
             <div className={styles.avatar} style={style}></div>

@@ -19,13 +19,15 @@ class NewSectionForm extends Component {
   remove = (k) => {
     const { form } = this.props;
     const keys = form.getFieldValue('fields');
-    console.info('remove__', keys, k);
     if (keys.length === 1) {
       return;
     }
     form.setFieldsValue({
-      fields: keys.filter((key, index) => index !== k)
+      fields: keys.filter((key, index) => {
+        return index !== k;
+      })
     });
+
   }
 
   add = () => {
@@ -40,7 +42,7 @@ class NewSectionForm extends Component {
   removeListField = (field, k) => {
     const { form } = this.props;
     const keys = form.getFieldValue(`field-${field}-list`);
-    console.info('removeListField_', field, 'k', k, 'keys', keys);
+    console.info('removeListField_field:', field, 'k:', k, 'keys:', keys);
     if (keys.length === 1) {
       return;
     }
@@ -48,6 +50,7 @@ class NewSectionForm extends Component {
     form.setFieldsValue({
       [`field-${field}-list`]: keys.filter((key, idx) => idx !== k)
     });
+    console.info('remove__)', form.getFieldValue(`field-${field}-list`));
   }
   addListField = (field) => {
     const { form } = this.props;
@@ -133,12 +136,13 @@ class NewSectionForm extends Component {
     getFieldDecorator('fields', { initialValue: initial_fields });
     const fields = getFieldValue('fields');
     const fieldsItem = fields.map((field, index) => {
-      const item = fieldList && fieldList[index] || {};
+      const item = fields && fields[index] || {};
       const isList_field = item.type === 'List' || getFieldValue(`type-${index}`) === 'List';
       getFieldDecorator(`field-${index}-list`, { initialValue: field.list || [0] });
       const fieldsListItems = getFieldValue(`field-${index}-list`);
       let fieldsListItem;
       if (isList_field) {
+        console.info('fieldsListItems__', fieldsListItems);
         fieldsListItem = fieldsListItems.map((listField, idx) => {
           return (
             <div className={styles.card} key={idx}>

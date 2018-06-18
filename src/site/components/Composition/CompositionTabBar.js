@@ -2,12 +2,35 @@ import React, { Component } from 'react';
 import styles from './CompositionTabBar.scss';
 class CompositionTabBar extends Component {
   render() {
+    const { tabs, current_category } = this.props;
+    const TABS = {
+      animation: '动画',
+      ad: '广告',
+      movie: '电影'
+    };
+    const tabs_el = tabs.map((tab, index) => {
+      let catgory = '';
+      Object.keys(TABS).map(key => {
+        if (TABS[key] === tab) {
+          catgory = key;
+        }
+      });
+      let style_class = `${styles.item}`;
+      if (!current_category && index === 0) {
+        style_class = `${styles.item} ${styles.cur}`;
+      }
+      if (current_category && current_category === catgory) {
+        style_class = `${styles.item} ${styles.cur}`;
+      }
+      const url = `/composition?category=${catgory}`;
+      return (
+        <a href={url} className={style_class} key={index}>{tab}</a>
+      );
+    });
     return (
       <div className={styles.container}>
         <div className={styles.items}>
-          <a href="" className={styles.item}>游戏动画</a>
-          <a href="" className={styles.item}>影视剧</a>
-          <a href="" className={`${styles.item} ${styles.cur}`}>广告</a>
+          {tabs_el}
         </div>
       </div>
     );

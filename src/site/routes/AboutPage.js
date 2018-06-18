@@ -27,11 +27,11 @@ class IndexPage extends Component {
     const navs = getProperty(list, 'navigation').value;
     const pix = getProperty(list, 'slider').value;
     const news = getProperty(list, 'news').value;
-    const dubbers = getProperty(list, 'dubbers').value;
+    const slogan = getProperty(list, 'about_slogan').value;
 
     const sections = [
       <NavigationBar triggerFixedElementSelector='#banner' location={location} navs={navs} />,
-      <AboutBanner />,
+      <AboutBanner slogan={slogan} />,
       <AboutBusiness />,
       <AboutRoute />,
       <AboutOffice />,

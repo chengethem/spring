@@ -4,12 +4,17 @@ import banner from '../../../assets/demo/banner1_2x.jpg';
 
 class AboutBanner extends Component {
   render() {
+    let { slogan } = this.props;
+    if (!slogan || slogan.length < 1) {
+      return '';
+    }
+    slogan = slogan[0];
     return (
       <div className={styles.banner} id='banner'>
         <img src={banner} alt="" />
         <div className={styles.slogan}>
-          <p className={styles.title}>清泉，一个专业的配音团队</p>
-          <p className={styles.subtitle}>我们认真对待每一个声音</p>
+          <p className={styles.title}>{slogan.title}</p>
+          <p className={styles.subtitle}>{slogan.subtitle}</p>
         </div>
       </div>
     );

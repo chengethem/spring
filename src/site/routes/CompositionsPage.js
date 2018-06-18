@@ -8,6 +8,7 @@ import CompositionBannerBg2x from '../../assets/list_banner_bg_2x.jpg';
 import CompositionTabBar from '../components/Composition/CompositionTabBar';
 import CompositionList from '../components/Composition/CompositionList';
 import Footer from '../components/Footer';
+import querystring from 'querystring';
 
 function findByName(name) {
   return (item) => {
@@ -25,15 +26,24 @@ class CompositionsPage extends Component {
   render() {
     const { location, list, loading } = this.props;
     const navs = getProperty(list, 'navigation').value;
-    const pix = getProperty(list, 'slider').value;
-    const news = getProperty(list, 'news').value;
-    const dubbers = getProperty(list, 'dubbers').value;
+    const compositions = getProperty(list, 'compositions').value;
+    const query = querystring.parse(location.search.split('?')[1]);
+    let tabs = [];
+    if (!compositions) {
+      return '';
+    }
+    compositions.map(composition => {
+      console.info('composition__', composition);
+      if (composition.category && tabs.indexOf(composition.category) === -1) {
+        tabs.push(composition.category);
+      }
+    });
 
     const sections = [
       <NavigationBar fixed={true} location={location} navs={navs} />,
       <CompositionBanner bg={CompositionBannerBg} bg2x={CompositionBannerBg2x} title='我们的配音作品集' />,
-      <CompositionTabBar />,
-      <CompositionList />,
+      <CompositionTabBar tabs={tabs} current_category={query.category} />,
+      <CompositionList compositions={compositions} />,
       <Footer />
     ];
     return (

@@ -4,58 +4,37 @@ import styles from './Course.scss';
 
 class CompositionBanner extends Component {
   render() {
+    let { course } = this.props;
+    if (!course || course.length < 1) {
+      return '';
+    }
+    course = course[0];
+    console.info('__course', course);
+    const teacher_el = course.teacher.map((teacher, index) => {
+      return (
+        <a className={styles.dubber} href={teacher.homepage} target='_blank' key={index}>
+          <div className={styles['dubber-avatar']} target='_blank' style={{ 'backgroundImage': `url("${teacher.avatar}")` }}>
+          </div>
+          <div className={styles['dubber-title']}>
+            <div className={styles['dubber-name']}>{teacher.name}</div>
+            <div className={styles['dubber-desc']}>{teacher.desc}</div>
+          </div>
+        </a>
+      );
+    });
     return (
       <div className="">
         <div className={styles.titles}>
           <div className={styles['co-title']}>正在招生课程</div>
-          <div className={styles.title}>配音培训班第20期</div>
-          <div className={styles['sub-title']}>欢迎热爱配音的你来参加</div>
+          <div className={styles.title}>{course.course_name}</div>
+          <div className={styles['sub-title']}>{course.course_slogan}</div>
         </div>
         <div className={styles.mod}>
           <div className={styles['mod-title']}>
             导师阵容
           </div>
           <div className={styles.dubbers}>
-            <a className={styles.dubber} href="https://baike.baidu.com/item/%E5%BE%90%E6%95%8F/5834561#viewPageContent">
-              <div className={styles['dubber-avatar']} target='_blank' style={{ 'backgroundImage': 'url("http://oezn2ph4e.bkt.clouddn.com/xm1.jpg")' }}>
-              </div>
-              <div className={styles['dubber-title']}>
-                <div className={styles['dubber-name']}>徐敏</div>
-                <div className={styles['dubber-desc']}>香港国语著名配音演员</div>
-              </div>
-            </a>
-            <a className={styles.dubber} href="https://baike.baidu.com/item/%E5%BE%90%E6%95%8F/5834561#viewPageContent">
-              <div className={styles['dubber-avatar']} target='_blank' style={{ 'backgroundImage': 'url("http://oezn2ph4e.bkt.clouddn.com/xm1.jpg")' }}>
-              </div>
-              <div className={styles['dubber-title']}>
-                <div className={styles['dubber-name']}>徐敏</div>
-                <div className={styles['dubber-desc']}>香港国语著名配音演员</div>
-              </div>
-            </a>
-            <a className={styles.dubber} href="https://baike.baidu.com/item/%E5%BE%90%E6%95%8F/5834561#viewPageContent">
-              <div className={styles['dubber-avatar']} target='_blank' style={{ 'backgroundImage': 'url("http://oezn2ph4e.bkt.clouddn.com/xm1.jpg")' }}>
-              </div>
-              <div className={styles['dubber-title']}>
-                <div className={styles['dubber-name']}>徐敏</div>
-                <div className={styles['dubber-desc']}>香港国语著名配音演员</div>
-              </div>
-            </a>
-            <a className={styles.dubber} href="https://baike.baidu.com/item/%E5%BE%90%E6%95%8F/5834561#viewPageContent">
-              <div className={styles['dubber-avatar']} target='_blank' style={{ 'backgroundImage': 'url("http://oezn2ph4e.bkt.clouddn.com/xm1.jpg")' }}>
-              </div>
-              <div className={styles['dubber-title']}>
-                <div className={styles['dubber-name']}>徐敏</div>
-                <div className={styles['dubber-desc']}>香港国语著名配音演员</div>
-              </div>
-            </a>
-            <a className={styles.dubber} href="https://baike.baidu.com/item/%E5%BE%90%E6%95%8F/5834561#viewPageContent">
-              <div className={styles['dubber-avatar']} target='_blank' style={{ 'backgroundImage': 'url("http://oezn2ph4e.bkt.clouddn.com/xm1.jpg")' }}>
-              </div>
-              <div className={styles['dubber-title']}>
-                <div className={styles['dubber-name']}>徐敏</div>
-                <div className={styles['dubber-desc']}>香港国语著名配音演员</div>
-              </div>
-            </a>
+            {teacher_el}
           </div>
         </div>
         <div className={styles.mod}>
@@ -66,17 +45,17 @@ class CompositionBanner extends Component {
             <div className={styles['mod-card']}>
               <div className={styles['mod-card-title']}>招聘人数</div>
               <div className={`${styles['mod-card-icon']} ${styles['mod-card-icon--person']}`}></div>
-              <div className={styles['mod-card-content']}>20人</div>
+              <div className={styles['mod-card-content']}>{course.students_number}人</div>
             </div>
             <div className={styles['mod-card']}>
               <div className={styles['mod-card-title']}>开课日期</div>
               <div className={`${styles['mod-card-icon']} ${styles['mod-card-icon--clock']}`}></div>
-              <div className={`${styles['mod-card-content']} ${styles.highlight}`}>2018.04.08</div>
+              <div className={`${styles['mod-card-content']} ${styles.highlight}`}>{course.start_date}</div>
             </div>
             <div className={styles['mod-card']}>
               <div className={styles['mod-card-title']}>报名截止日期</div>
               <div className={`${styles['mod-card-icon']} ${styles['mod-card-icon--date']}`}></div>
-              <div className={`${styles['mod-card-content']} ${styles.highlight}`}>2018.05.01</div>
+              <div className={`${styles['mod-card-content']} ${styles.highlight}`}>{course.deadline}</div>
             </div>
           </div>
           <div className={styles.states}>

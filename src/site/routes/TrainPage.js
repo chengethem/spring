@@ -29,7 +29,8 @@ class IndexPage extends Component {
     const pix = getProperty(list, 'slider').value;
     const news = getProperty(list, 'news').value;
     const dubbers = getProperty(list, 'dubbers').value;
-    const left = <Course />;
+    const course = getProperty(list, 'course').value;
+    const left = <Course course={course} />;
     const right = <Previous />;
 
     const sections = [

@@ -103,7 +103,7 @@ class editSectionForm extends Component {
                   {getFieldDecorator(`${field.name}-${list.name}-${idx}`, {
                     rules: [{ required: true, message: `请输入${list.caption}` }],
                     initialValue: item && item[list.name] || ''
-                  })(<Input />)}
+                  })(<Input placeholder={list.placeholder || ''} />)}
                 </FormItem>
               );
             })
@@ -119,7 +119,7 @@ class editSectionForm extends Component {
                 {listItems.length > 1 ? (
                   <Icon
                     className={`${styles['dynamic-delete-button']} ${styles.remove}`}
-                    type="minus-circle-o"
+                    type="close"
                     disabled={listItems.length === 1}
                     onClick={() => this.removeListField(field.name, idx)}
                   />
