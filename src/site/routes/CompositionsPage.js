@@ -29,21 +29,34 @@ class CompositionsPage extends Component {
     const compositions = getProperty(list, 'compositions').value;
     const query = querystring.parse(location.search.split('?')[1]);
     let tabs = [];
+    const TABS = {
+      movie: '电影',
+      teleplay: '电视剧',
+      animation: '动画',
+      stage: '舞台剧',
+      ad: '广告',
+    };
     if (!compositions) {
       return '';
     }
     compositions.map(composition => {
-      console.info('composition__', composition);
       if (composition.category && tabs.indexOf(composition.category) === -1) {
         tabs.push(composition.category);
       }
+    });
+    const ordered_tabs = [];
+    Object.keys(TABS).map(tab => {
+      if (tabs.indexOf(TABS[tab]) != -1) {
+        ordered_tabs.push(TABS[tab]);
+      }
+      return tab;
     });
 
     const sections = [
       <NavigationBar fixed={true} location={location} navs={navs} />,
       <CompositionBanner bg={CompositionBannerBg} bg2x={CompositionBannerBg2x} title='我们的配音作品集' />,
-      <CompositionTabBar tabs={tabs} current_category={query.category} />,
-      <CompositionList compositions={compositions} />,
+      <CompositionTabBar tabs={ordered_tabs} current_category={query.category} />,
+      <CompositionList compositions={compositions} current_category={query.category} />,
       <Footer />
     ];
     return (

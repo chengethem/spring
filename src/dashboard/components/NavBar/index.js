@@ -19,7 +19,7 @@ class NavBar extends Component {
           const link = `/dashboard/${nav.name}?index=${idx}`;
           return (
             <Item className={styles.item} data-key={link} key={link}>
-              <Link className={`${styles.a} ${styles['sub-item']}`} to={link}>{item.caption || item.title || idx + 1}</Link>
+              <Link className={`${styles.a} ${styles['sub-item']}`} to={link}>{item.caption || item.title ||item.name|| idx + 1}</Link>
             </Item>
           );
         });

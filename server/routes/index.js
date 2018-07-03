@@ -12,7 +12,7 @@ router.post('/api/sections', (ctx, next) => {
   const { section } = ctx.request.body;
   const { caption, name, isList, fields } = section;
   const new_section = Object.assign({}, { caption, name, isList, fields: [] });
-  fields.length > 0 && fields.map((i,index) => {
+  fields.length > 0 && fields.map((i, index) => {
     const field = {
       caption: section[`caption-${index}`],
       name: section[`name-${index}`],
@@ -42,6 +42,8 @@ router.patch('/api/section', (ctx, next) => {
   let sectionClone = Object.assign({}, section);
   console.info('section__', section);
   let value = sectionClone.value;
+  let change_order;
+  let change_index;
   if (section.eidtField) {
     delete sectionClone.eidtField;
     let fields = section.fields;
@@ -71,7 +73,12 @@ router.patch('/api/section', (ctx, next) => {
     });
   }
   if (sectionClone.value) {
-    sectionClone.value = sectionClone.value.map(item => {
+    sectionClone.value = sectionClone.value.map((item, item_index) => {
+      if (item.order) {
+        change_order = +item.order - 1;
+        change_index = item_index;
+        delete item.order;
+      }
       sectionClone.fields.map(field => {
         let list;
         if (field.type === 'List') {
@@ -92,19 +99,45 @@ router.patch('/api/section', (ctx, next) => {
       console.info('sectionClone', item);
       return item;
     });
+
+    //更换顺序
+    if (change_order >= 0 && change_order != change_index) {
+      let temp = sectionClone.value[change_order];
+      sectionClone.value[change_order] = sectionClone.value[change_index];
+      sectionClone.value[change_index] = temp;
+    }
   }
-  console.info('sectionClone__', sectionClone);
+  // console.info('sectionClone__', sectionClone);
   return Section.findOneAndUpdate({ name: section.name }, { $set: sectionClone }).then(section => {
-    console.info('sectionClone__||', section);
+    // console.info('sectionClone__||', section);
     return ctx.body = {};
   });
 });
+
+//删除模块
 router.delete('/api/section', (ctx, next) => {
   const section = ctx.request.body;
   return Section.remove({ _id: section.id }).then(() => {
     return ctx.body = {};
   })
   console.info('delete__', section);
+});
+
+//删除项目
+router.delete('/api/section_value', (ctx, next) => {
+  const section = ctx.request.body;
+  const { index, id } = section;
+  console.info('delete_value', section, typeof section.index);
+  return Section.findOne({ _id: id }).then(doc => {
+    doc.value.splice(+index, 1);
+    return Section.findOneAndUpdate({ _id: id }, { $set: doc }).then(section => {
+      return ctx.body = {};
+    });
+  });
+  // return Section.remove({ _id: section.id }).then(() => {
+  //   return ctx.body = {};
+  // })
+  // console.info('delete__', section);
 });
 router.get('/dashboard/*', (ctx, next) => {
   return ctx.render('dashboard');

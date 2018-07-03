@@ -8,16 +8,19 @@ class CompositionCast extends Component {
     if (!cast) {
       return '';
     }
+    if(!cast[0].name){
+      return '';
+    }
     const cast_el = cast.map(cast => {
       const avatar_style = {
         backgroundImage: `url(${cast.avatar})`
       }
       return (
-        <div className={styles.item}>
+        <a href={cast.homepage?cast.homepage:'javascript:;'} target={cast.homepage&&cast.homepage.indexOf('http')!=-1?'_blank':''} className={styles.item}>
           <div className={styles.avatar} style={avatar_style}></div>
           <div className={styles.name}>{cast.name}</div>
           <div className={styles.acting} title={cast.role}>{cast.role}</div>
-        </div>
+        </a>
       );
     });
     return (

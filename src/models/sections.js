@@ -30,6 +30,10 @@ export default {
       yield call(sectionsService.remove, id);
       yield put({ type: 'reload' });
     },
+    *removeItem({ payload: { index, id } }, { call, put }) {
+      yield call(sectionsService.removeItem, { index, id });
+      yield put({ type: 'reload' });
+    },
     *patch({ payload: values }, { call, put }) {
       yield call(sectionsService.patch, values);
       yield put({ type: 'reload' });

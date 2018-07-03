@@ -18,19 +18,39 @@ class CompositionInfo extends Component {
         </div>
       );
     });
-    const clips_el = clips.map((clip, clip_index) => {
+    const clips_el = clips[0] && clips[0].cover && clips.map((clip, clip_index) => {
       const clip_cover_style = {
         backgroundImage: `url(${clip.cover})`
       };
+      let cover_el = '';
+      let desc_el = '';
+      if (clip.video) {
+        cover_el = <a className={styles['item-cover']} style={clip_cover_style} href={clip.video} target='_blank'>
+          <div className={`${styles['icon-play']} ${styles['item-play']}`}></div>
+        </a>;
+      } else {
+        cover_el = <div className={`${styles['item-cover']} ${styles['item-pic']}`} style={clip_cover_style} target='_blank'>
+        </div>
+      }
+      if (clip.clips_desc) {
+        desc_el = <div className={styles['item-content']}>{clip.clips_desc}</div>;
+      }
       return (
         <div className={styles['mod-item']} key={clip_index}>
-          <a className={styles['item-cover']} style={clip_cover_style} href={clip.video} target='_blank'>
-            <div className={`${styles['icon-play']} ${styles['item-play']}`}></div>
-          </a>
-          <div className={styles['item-content']}>{clip.clips_desc}</div>
+          {cover_el}
+          {desc_el}
         </div>
       );
     });
+    const clips_mod = clips_el ? (
+      <div className="">
+        <div className={styles['mod-title']}>精彩片段</div>
+        <div className={styles['mod-pics']}>
+          {clips_el}
+        </div>
+      </div>
+    ) : '';
+    console.info('__', clips, clips_el);
 
     return (
       <div className={styles.container}>
@@ -50,12 +70,7 @@ class CompositionInfo extends Component {
             {composition.story}
           </div>
         </div>
-        <div className="">
-          <div className={styles['mod-title']}>视频片段</div>
-          <div className={styles['mod-pics']}>
-            {clips_el}
-          </div>
-        </div>
+        {clips_mod}
       </div>
     );
   }

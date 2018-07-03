@@ -6,13 +6,15 @@
 .overview {
   padding-bottom: 30px;
   border-bottom: 1px solid #e8e8e8;
+  overflow: hidden;
 }
 
 .cover {
   width: 210px;
   height: 264px;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
   float: left;
 }
 
@@ -67,6 +69,7 @@
   margin-right: 20px;
   display: inline-block;
   white-space: normal;
+  vertical-align: top;
   &:last-child {
     margin-right: 0;
   }
@@ -108,17 +111,24 @@
   transition: 400ms;
 }
 
+.item-pic:after {
+  display: none;
+}
+
 .icon-play {
   background-image: url('../../../assets/icon/play.png');
   width: 60px;
   height: 60px;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.item-play {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
-  opacity: 0;
+  opacity: .3;
   transition: 400ms;
   z-index: 10;
 }

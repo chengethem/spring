@@ -11,6 +11,12 @@ export function remove(id) {
     body: JSON.stringify(id)
   });
 }
+export function removeItem(index, id) {
+  return request(`/api/section_value`, {
+    method: 'DELETE',
+    body: JSON.stringify(index, id)
+  });
+}
 
 export function patch(values) {
   return request(`/api/section`, {

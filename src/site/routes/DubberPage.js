@@ -32,8 +32,12 @@ class DubberPage extends Component {
     if (!dubbers) {
       return '';
     }
-    const dubber = dubbers[query.index];
-    console.info('__dubber', dubbers, dubber, query);
+    // const dubber = dubbers[query.index];
+    const id = query.id;
+    // console.info('__dubber', dubbers, dubber, query);
+    const dubber = dubbers.find(item => {
+      return item.id == id;
+    });
     const left = <DubberInfo dubber={dubber} />;
     const right = <DubberCompositions compositions={dubber.compositions} />;
 

@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import { Form, Select, Icon, Input, Button, Row, Col, Cascader, InputNumber } from 'antd';
 import styles from './styles.scss';
 import { connect } from 'dva';
-import { message } from 'antd';
+import { message, Modal } from 'antd';
 const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input;
 
 class editSectionForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false
+    };
+  }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -25,6 +31,7 @@ class editSectionForm extends Component {
       type: 'sections/patch',
       payload: { section },
     }).then(() => {
+      // this.props.history.push(`/dashboard/`);
       message.success('保存成功', 2);
     });
   }
@@ -50,11 +57,51 @@ class editSectionForm extends Component {
       [`list-item-${field}`]: keys.filter((key, idx) => idx !== k)
     });
   }
+  showModal = (e) => {
+    this.setState({
+      visible: true
+    });
+  }
+  handleCancel = (e) => {
+    this.setState({
+      visible: false
+    });
+  }
+  removeItem = (e) => {
+    const { section, dispatch, index } = this.props;
+    dispatch({
+      type: 'sections/removeItem',
+      payload: { index, id: section._id },
+    }).then(() => {
+      message.success('删除成功');
+      this.props.history.push(`/dashboard/`);
+    });
+  }
 
   render() {
     const _this = this;
     const { section, index } = this.props;
+    if (!section) {
+      return '';
+    }
     const { getFieldDecorator, getFieldValue } = this.props.form;
+    const removeBtn = (
+      <Button className={styles.submit} type="danger" onClick={this.showModal}>删除</Button>
+    );
+    const removeModal = (
+      <Modal
+        title="删除确认"
+        cancelText="取消"
+        okText="确定"
+        okType="danger"
+        visible={this.state.visible}
+        onOk={this.removeItem}
+        onCancel={this.handleCancel}
+      >
+        <p>确定删除本项吗？</p>
+      </Modal>
+    );
+    const { isList, value } = section;
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -153,14 +200,38 @@ class editSectionForm extends Component {
         </FormItem>
       );
     });
+    let order_el = '';
+    if (isList && value.length > 1) {
+      const option_el = value.map((doc, idx) => {
+        return <Option value={idx + 1} key={idx}>{idx + 1}</Option>
+      });
+      order_el = isList ?
+        <FormItem
+          {...formItemLayout}
+          label="排位"
+        >
+          {getFieldDecorator(`order`, { initialValue: +index + 1 })(
+            <Select>
+              {option_el}
+            </Select>
+          )}
+        </FormItem>
+        : '';
+    }
+
 
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit} >
+        {order_el}
         {fieldItems}
         <FormItem {...submitLayout}>
           <Button className={styles.submit} type="primary" htmlType="submit">保存</Button>
-        </FormItem>
-      </Form>
+        </FormItem >
+        <FormItem {...submitLayout}>
+          {removeBtn}
+          {removeModal}
+        </FormItem >
+      </Form >
     );
   }
 }

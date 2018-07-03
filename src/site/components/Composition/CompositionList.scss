@@ -20,7 +20,8 @@
   margin-right: 13px;
   margin-bottom: 20px;
   vertical-align: top;
-  &:nth-child(n+4) {
+  overflow: hidden;
+  &:nth-child(4n+4) {
     margin-right: 0px;
   }
   &:hover {
@@ -75,13 +76,16 @@
   /* autoprefixer: off */
   -webkit-box-orient: vertical;
   /* autoprefixer: on */
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 5;
   display: -webkit-box;
   overflow: hidden;
+  font-weight: 200;
+  white-space: pre-wrap;
 }
 
 .date {
   font-size: 14px;
+  line-height: 1em;
   color: #999;
   vertical-align: middle;
 }

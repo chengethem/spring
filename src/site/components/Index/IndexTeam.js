@@ -11,7 +11,7 @@ class IndexTeam extends Component {
         'backgroundImage': `url(${item.avatar})`
       };
       return (
-        <a className={styles.item} href={`/dubber?index=${idx}`} key={idx} target="_blank">
+        <a className={styles.item} href={`/dubber?id=${item.id}`} key={idx} target="_blank">
           <div className={styles['item-avatar']} src={item.avatar} alt={item.name} style={avatarStyle}></div>
           <div className={styles['item-text']}>
             <div className={styles['item-name']}>
