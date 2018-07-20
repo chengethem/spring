@@ -28,8 +28,9 @@ class IndexPage extends Component {
     const navs = getProperty(list, 'navigation').value;
     const previous = getProperty(list, 'previous').value;
     const course = getProperty(list, 'course').value;
+    const download = getProperty(list, 'download').value;
     const left = <Course course={course} />;
-    const right = <Previous previous={previous} />;
+    const right = <Previous previous={previous} download={download} />;
 
     const sections = [
       <NavigationBar fixed={true} location={location} navs={navs} />,

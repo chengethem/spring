@@ -63,8 +63,8 @@ function RouterConfig({ history, app }) {
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path="/" component={IndexPage} />
-        <Route exact path="/v1" component={IndexPageI} />
+        <Route exact path="/v1" component={IndexPage} />
+        <Route exact path="/" component={IndexPageI} />
         <Route exact path="/about" component={AboutPage} />
         <Route exact path="/train" component={TrainPage} />
         <Route exact path="/compositions" component={CompositionsPage} />

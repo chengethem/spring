@@ -14,7 +14,6 @@ class IndexBanner extends Component {
     slogan = slogan[0];
     return (
       <div className={styles.banner} id='banner' style={bg_style}>
-        {/* <img src='http://p192wtmk1.bkt.clouddn.com/banner_3.jpg' alt="" /> */}
         <div className={styles.slogan}>
           <p className={`${styles.title} ${styles.space0}`}>{slogan.title}</p>
           <p className={`${styles.subtitle} ${styles.space1}`}>{slogan.subtitle}</p>
