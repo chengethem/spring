@@ -4,11 +4,17 @@ import img from '../../../assets/demo/video.jpg';
 
 class IndexVideo extends Component {
   render() {
+    let { video } = this.props;
+    console.info('__IndexVideo', video);
+    if(!video){
+      return '';
+    }
+    video = video[0];
     return (
-      <div className={styles.container}>
-        <img src={img} alt="" />
+      <a target='_blank' href={video.link} className={styles.container}>
+        <img src={video.cover} alt="" />
         <div className={styles.button}></div>
-      </div>
+      </a>
     );
   }
 }

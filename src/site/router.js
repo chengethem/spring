@@ -45,6 +45,13 @@ function RouterConfig({ history, app }) {
     ],
     component: () => import('./routes/TrainPage')
   });
+  const JobPage = dynamic({
+    app,
+    models: () => [
+      import('../models/sections.js'),
+    ],
+    component: () => import('./routes/JobPage')
+  });
   const DubberPage = dynamic({
     app,
     models: () => [
@@ -63,6 +70,7 @@ function RouterConfig({ history, app }) {
         <Route exact path="/compositions" component={CompositionsPage} />
         <Route exact path="/composition" component={CompositionPage} />
         <Route exact path="/dubber" component={DubberPage} />
+        <Route exact path="/job" component={JobPage} />
       </Switch>
     </Router>
   );

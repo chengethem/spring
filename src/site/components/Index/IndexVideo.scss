@@ -1,6 +1,7 @@
 .container {
   background: #000;
   position: relative;
+  display: block;
   &:before {
     content: '';
     display: block;
@@ -10,6 +11,11 @@
     left: 0;
     right: 0;
     background: rgba(#000, .5);
+  }
+  &:hover{
+    .button{
+      opacity: 1;
+    }
   }
 }
 
@@ -24,6 +30,8 @@
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   z-index: 10;
+  opacity: .8;
+  transition: 400ms;
 }
 
 @media (device-pixel-ratio: 2),

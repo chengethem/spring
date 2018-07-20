@@ -102,9 +102,11 @@ router.patch('/api/section', (ctx, next) => {
 
     //更换顺序
     if (change_order >= 0 && change_order != change_index) {
-      let temp = sectionClone.value[change_order];
-      sectionClone.value[change_order] = sectionClone.value[change_index];
-      sectionClone.value[change_index] = temp;
+      let temp = sectionClone.value[change_index];
+      sectionClone.value.splice(change_index, 1);
+      sectionClone.value.splice(change_order, 0, temp);
+      // sectionClone.value[change_order] = sectionClone.value[change_index];
+      // sectionClone.value[change_index] = temp;
     }
   }
   // console.info('sectionClone__', sectionClone);

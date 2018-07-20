@@ -31,6 +31,7 @@ class CompositionsPage extends Component {
     let tabs = [];
     const TABS = {
       movie: '电影',
+      game: '游戏',
       teleplay: '电视剧',
       animation: '动画',
       stage: '舞台剧',

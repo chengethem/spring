@@ -18,6 +18,9 @@
   font-size: 18px;
   color: #333;
   text-align: center;
+}
+
+.weibo {
   &:after {
     content: '';
     background-image: url('../../../assets/icon/weibo.png');
@@ -41,7 +44,7 @@
 
 @media (device-pixel-ratio: 2),
 (min-resolution: 192dpi) {
-  .name {
+  .weibo {
     &:after {
       background-image: url('../../../assets/icon/weibo_2x.png');
     }

@@ -30,15 +30,17 @@ class IndexPage extends Component {
     const pix = getProperty(list, 'slider').value;
     const news = getProperty(list, 'news').value;
     const dubbers = getProperty(list, 'dubbers').value;
+    const team_others = getProperty(list, 'team_others').value;
     const slogan = getProperty(list, 'slogan').value;
+    const banner_video = getProperty(list, 'banner_video').value;
 
     const sections = [
       <NavigationBar triggerFixedElementSelector='#banner' location={location} navs={navs} />,
       <IndexBanner slogan={slogan} />,
       <IndexBrief />,
-      <IndexVideo />,
+      <IndexVideo video={banner_video} />,
       <IndexNews list={news} />,
-      <IndexTeam list={dubbers} />,
+      <IndexTeam list={dubbers} team={team_others} />,
       <IndexPartner />,
       <IndexMore moreLink='/about' />,
       <Footer />

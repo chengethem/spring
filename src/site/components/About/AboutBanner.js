@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from '../Index/IndexBanner.scss';
-import banner from '../../../assets/demo/banner1_2x.jpg';
+// import banner from '../../../assets/demo/banner1_2x.jpg';
 
 class AboutBanner extends Component {
   render() {
@@ -9,9 +9,13 @@ class AboutBanner extends Component {
       return '';
     }
     slogan = slogan[0];
+    const bg_style = {
+      backgroundImage: "url('http://p192wtmk1.bkt.clouddn.com/banner_1.jpg')"
+    };
     return (
-      <div className={styles.banner} id='banner'>
-        <img src={banner} alt="" />
+      <div className={styles.banner} id='banner' style={bg_style}>
+        {/* <img src='http://p192wtmk1.bkt.clouddn.com/19th.jpg' alt="" /> */}
+        {/* <img src='http://p192wtmk1.bkt.clouddn.com/banner_1.jpg' alt="" /> */}
         <div className={styles.slogan}>
           <p className={styles.title}>{slogan.title}</p>
           <p className={styles.subtitle}>{slogan.subtitle}</p>

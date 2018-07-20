@@ -7,6 +7,7 @@ class CompositionList extends Component {
   render() {
     const TABS = {
       animation: '动画',
+      game: '游戏',
       stage: '舞台剧',
       teleplay: '电视剧',
       ad: '广告',
@@ -17,7 +18,7 @@ class CompositionList extends Component {
     console.info('**current_category', current_category);
     const show_compositions = compositions.filter(composition => {
       const composition_category = composition.category;
-      return TABS[current_category || 'animation'] === composition_category;
+      return TABS[current_category || 'movie'] === composition_category;
     });
     // console.info('CompositionList_compositions', compositions, show_compositions);
     const compositions_el = show_compositions.map((composition, index) => {

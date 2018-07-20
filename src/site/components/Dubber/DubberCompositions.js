@@ -21,11 +21,12 @@ class DubberCompositions extends Component {
         const coverStyle = {
           backgroundImage: `url("${item.composition_cover}")`
         };
+        const a_el = item.composition_link ? <a href={item.composition_link} target='_blank' className={styles['mask-link']}></a> : '';
         return (
           <div className={styles.item} key={idx}>
             <div className={styles.cover} style={coverStyle}></div>
             <div className={styles.name}>{item.composition_name}</div>
-            <a href={item.composition_link} target='_blank' className={styles['mask-link']}></a>
+            {a_el}
           </div>
         )
       });

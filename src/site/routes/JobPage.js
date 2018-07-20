@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
 import MainLayout from '../components/MainLayoutI';
-import TwoSideLayout from '../components/TwoSideLayout/TwoSideLayout';
 import NavigationBar from '../components/NavigationBar';
-import Banner from '../components/common/Banner';
-import Course from '../components/Train/Course';
-import Previous from '../components/Train/Previous';
-import bannerBg from '../../assets/train_bg.jpg';
-import bannerBg2x from '../../assets/train_bg_2x.jpg';
+import Recruit from '../components/Job/Recruit';
 import Footer from '../components/Footer';
 
 function findByName(name) {
@@ -22,20 +17,20 @@ function getProperty(obj, key) {
   }
   return obj[key] || '';
 }
-class IndexPage extends Component {
+class JobPage extends Component {
   render() {
     const { location, list, loading } = this.props;
     const navs = getProperty(list, 'navigation').value;
-    const previous = getProperty(list, 'previous').value;
-    const course = getProperty(list, 'course').value;
-    const left = <Course course={course} />;
-    const right = <Previous previous={previous} />;
+    const pix = getProperty(list, 'slider').value;
+    const job = getProperty(list, 'job').value;
+    const slogan = getProperty(list, 'about_slogan').value;
+    console.info('job^^', job);
+    const footer = job && job.length ? (<Footer />) : '';
 
     const sections = [
       <NavigationBar fixed={true} location={location} navs={navs} />,
-      <Banner bg={bannerBg} bg2x={bannerBg2x} title='配音培训班' />,
-      <TwoSideLayout left={left} right={right} />,
-      <Footer />
+      <Recruit jobs={job} />,
+      footer
     ];
     return (
       <MainLayout sections={sections}>
@@ -52,4 +47,4 @@ function mapStateToProps(state) {
     page,
   };
 }
-export default connect(mapStateToProps)(IndexPage);
+export default connect(mapStateToProps)(JobPage);

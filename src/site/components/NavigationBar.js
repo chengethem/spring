@@ -43,7 +43,7 @@ class NavigationBar extends Component {
     return (
       <div className={navigatorStyle} ref={this.navigation}>
         <div className={styles.list}>
-          <a href='' className={styles.logo}></a>
+          <a href={navs && navs[0].link} className={styles.logo}></a>
           <div className={styles.items}>
             {items}
           </div>

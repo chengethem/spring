@@ -7,6 +7,20 @@ class Previous extends Component {
     const style = {
       backgroundImage: `url("http://oezn2ph4e.bkt.clouddn.com/yt1.jpg")`
     }
+    const { previous } = this.props;
+    if (!previous) { return '' };
+    const previous_el = previous.map((item, index) => {
+      const style = {
+        backgroundImage: `url("${item.avatar}")`
+      };
+      return (
+        <a className={styles.item} href={item.homepage} target='_blank'>
+          <div className={styles.avatar} style={style}></div>
+          <div className={styles.name}>{item.name}</div>
+          <div className={styles.subname}>{item.desc}</div>
+        </a>
+      );
+    });
     return (
       <div>
         <div className={styles.info}>
@@ -18,16 +32,7 @@ class Previous extends Component {
         </div>
         <div className={styles.title}>往期优秀学员</div>
         <div className={styles.list}>
-          <div className={styles.item}>
-            <div className={styles.avatar} style={style}></div>
-            <div className={styles.name}>张昱</div>
-            <div className={styles.subname}>清泉配音演员、导演</div>
-          </div>
-          <div className={styles.item}>
-            <div className={styles.avatar} style={style}></div>
-            <div className={styles.name}>张昱</div>
-            <div className={styles.subname}>清泉配音演员、导演</div>
-          </div>
+          {previous_el}
         </div>
       </div>
     );

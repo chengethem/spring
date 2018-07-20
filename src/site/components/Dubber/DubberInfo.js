@@ -8,12 +8,12 @@ class DubberInfo extends Component {
     const itemStyle = {
       backgroundImage: `url("${dubber.avatar}")`
     };
-
+    const name_el = dubber.weibo_url ? (<a href={dubber.weibo_url} target='_blank' className={`${styles.name} ${styles.weibo}`}>{dubber.name}</a>) : (<div className={styles.name}>{dubber.name}</div>);
     return (
       <div className={styles.container}>
         <div className={styles.pane}>
           <div className={styles.avatar} style={itemStyle}></div>
-          <a href={dubber.weibo_url} target='_blank' className={styles.name}>{dubber.name}</a>
+          {name_el}
           <div className={styles.title}>{dubber.job}</div>
           <pre className={styles.desc}>
             {dubber.desc}
