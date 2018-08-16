@@ -1,0 +1,13 @@
+.contianer {
+  position: relative;
+  overflow: hidden;
+  font-size: 0;
+  padding-top: 20px;
+}
+
+.left {
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: top;
+  width: 100%;
+}

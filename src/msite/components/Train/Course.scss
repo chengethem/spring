@@ -1,0 +1,173 @@
+.highlight {
+  color: #b2804d !important;
+}
+
+.co-title {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 28px;
+  color: #333;
+}
+
+.sub-title {
+  font-size: 16px;
+  color: #999;
+}
+
+.titles {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mod {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mod-title {
+  font-size: 18px;
+  color: #b2804d;
+  padding: 16px 0;
+}
+
+.dubbers {
+  overflow: hidden;
+  padding-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dubber {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 26px;
+  box-sizing: border-box;
+}
+
+.dubber-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  float: left;
+}
+
+.dubber-title {
+  margin-left: 82px;
+}
+
+.dubber-name {
+  font-size: 18px;
+  color: #333;
+}
+
+.dubber-desc {
+  font-size: 14px;
+  color: #b2804d;
+}
+
+.status {
+  padding-bottom: 36px;
+}
+
+.mod-card {
+  position: relative;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  width: 100%;
+  height: 84px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 16px 8px;
+  margin-right: 18px;
+  margin-bottom: 10px;
+}
+
+.mod-card-title {
+  font-size: 14px;
+  color: #333;
+}
+
+.mod-card-content {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+}
+
+.mod-card-icon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  right: 8px;
+  top: 16px;
+}
+
+.mod-card-icon--person {
+  width: 15px;
+  height: 15px;
+  background-image: url('../../../assets/icon/person.png');
+}
+
+.mod-card-icon--date {
+  width: 16px;
+  height: 16px;
+  background-image: url('../../../assets/icon/date.png');
+}
+
+.mod-card-icon--clock {
+  width: 16px;
+  height: 16px;
+  background-image: url('../../../assets/icon/clock.png');
+}
+
+@media (device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .mod-card-icon--person {
+    background-image: url('../../../assets/icon/person_2x.png');
+  }
+  .mod-card-icon--date {
+    background-image: url('../../../assets/icon/date_2x.png');
+  }
+  .mod-card-icon--clock {
+    background-image: url('../../../assets/icon/clock_2x.png');
+  }
+}
+
+.states {
+  padding-bottom: 20px;
+}
+
+.state {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.state-label {
+  font-size: 16px;
+  color: #666;
+  float: left;
+}
+
+.state-content {
+  font-size: 16px;
+  color: #333;
+  margin-left: 80px;
+}
+
+.mod-p-title {
+  font-size: 16px;
+  color: #666;
+  margin: 20px 0;
+}
+
+.mod-p-content {
+  font-size: 16px;
+  line-height: 1.6em;
+  color: #999;
+  margin: 20px 0;
+  white-space: pre-wrap;
+}

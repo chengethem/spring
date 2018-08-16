@@ -1,0 +1,88 @@
+$item-height:160px;
+.item {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 30px;
+  text-decoration: none;
+  &:hover,
+  a:active {
+    text-decoration: none;
+  }
+}
+
+.item:first-child {
+  margin-top: 10px;
+}
+
+.item-cover {
+  width: 100%;
+  height: $item-height;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.item-text {
+  position: relative;
+}
+
+.item-title {
+  font-size: 18px;
+  color: #333;
+  word-wrap: break-word;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  overflow: hidden;
+  padding: 5px 0;
+  line-height: 1.6em;
+}
+
+.item-desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
+  font-size: 16px;
+  line-height: 22px;
+  color: #666;
+}
+
+.item-update {
+  width: 100%;
+  background: #fff;
+  font-size: 14px;
+  color: #999;
+  padding: 5px 0;
+  line-height: 1.6em;
+}
+
+.item-update--icon {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  background-image: url('../../../assets/icon/time.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+@media (device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .item-update--icon {
+    background-image: url('../../../assets/icon/time_2x.png');
+  }
+}
+
+.item-update--text {
+  vertical-align: middle;
+}

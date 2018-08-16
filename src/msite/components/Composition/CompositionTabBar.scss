@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #eee;
+  justify-content: space-around;
+}
+
+.item {
+  height: 60px;
+  line-height: 60px;
+  font-size: 18px;
+  color: #333;
+  display: inline-block;
+  position: relative;
+  &.cur,
+  &:hover {
+    color: #b2804d;
+    &:after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: #b2804d;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+    }
+  }
+}

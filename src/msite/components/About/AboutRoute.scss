@@ -1,0 +1,28 @@
+.title {
+  font-size: 28px;
+  color: #333;
+  padding: 10px 0 16px;
+}
+
+.route {
+  font-size: 16px;
+  color: #666;
+  line-height: 24px;
+  padding-bottom: 20px;
+}
+
+.routes {
+  padding-left: 0;
+  list-style: none;
+}
+
+.route:before {
+  content: '• ';
+  color: #ba7d48;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}

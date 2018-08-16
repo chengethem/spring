@@ -144,7 +144,18 @@ router.delete('/api/section_value', (ctx, next) => {
 router.get('/dashboard/*', (ctx, next) => {
   return ctx.render('dashboard');
 });
+router.get('/browser', (ctx, next) => {
+  // console.log(ctx.request.headers['user-agent']);
+  return ctx.body = ctx.request.headers['user-agent'];
+});
+router.get('/m/*', function (ctx, next) {
+  return ctx.render('mindex', { title: '清泉工作室' });
+});
 router.get('*', function (ctx, next) {
+  const ua = ctx.request.headers['user-agent'];
+  if (ua.indexOf('iPhone') != -1 || ua.indexOf('Android') != -1) {
+    return ctx.render('mindex', { title: '清泉工作室' });
+  }
   return ctx.render('index', { title: '清泉工作室' });
 });
 

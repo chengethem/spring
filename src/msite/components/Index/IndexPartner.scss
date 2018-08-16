@@ -1,0 +1,25 @@
+.list {
+  display: flex;
+  align-items: center;
+}
+
+.item {
+  width: 224px;
+  height: 224px;
+  display: inline-block;
+  background: #f4f4f4;
+  vertical-align: top;
+  position: relative;
+  margin-top: 20px;
+}
+
+.item:nth-child(2n) {
+  background: #fafbfc;
+}
+
+.item-pic {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: scale(.5) translate3d(-100%, -100%, 0);
+}

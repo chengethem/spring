@@ -10,12 +10,12 @@ class AboutBanner extends Component {
     }
     slogan = slogan[0];
     const bg_style = {
-      backgroundImage: "url('http://p192wtmk1.bkt.clouddn.com/banner_1.jpg')"
+      backgroundImage: "url('http://cdn.springmedia.com.cn/banner_1.jpg')"
     };
     return (
       <div className={styles.banner} id='banner' style={bg_style}>
-        {/* <img src='http://p192wtmk1.bkt.clouddn.com/19th.jpg' alt="" /> */}
-        {/* <img src='http://p192wtmk1.bkt.clouddn.com/banner_1.jpg' alt="" /> */}
+        {/* <img src='http://cdn.springmedia.com.cn/19th.jpg' alt="" /> */}
+        {/* <img src='http://cdn.springmedia.com.cn/banner_1.jpg' alt="" /> */}
         <div className={styles.slogan}>
           <p className={styles.title}>{slogan.title}</p>
           <p className={styles.subtitle}>{slogan.subtitle}</p>

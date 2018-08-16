@@ -1,0 +1,31 @@
+.tag {
+  width: 20px;
+  height: 13px;
+  background-image: url('../../../assets/icon/tag.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media (device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .tag {
+    background-image: url('../../../assets/icon/tag_2x.png');
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding: 30px 15px;
+}
+
+.title {
+  padding: 15px 0;
+  font-size: 28px;
+  color: #333;
+}

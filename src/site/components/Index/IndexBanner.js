@@ -9,7 +9,7 @@ class IndexBanner extends Component {
       return '';
     }
     const bg_style = {
-      backgroundImage: "url('http://p192wtmk1.bkt.clouddn.com/banner_3.jpg')"
+      backgroundImage: "url('http://cdn.springmedia.com.cn/banner_3.jpg')"
     }
     slogan = slogan[0];
     return (

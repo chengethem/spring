@@ -9,7 +9,8 @@ const pathsToClean = path.join(__dirname, './public/dist');
 module.exports = {
   entry: {
     site: './src/site/index.js',
-    dashboard: './src/dashboard/index.js'
+    dashboard: './src/dashboard/index.js',
+    msite: './src/msite/index.js'
   },
   output: {
     path: path.resolve('./', 'public/dist/'),

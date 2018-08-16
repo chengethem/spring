@@ -47,7 +47,7 @@ class editSectionForm extends Component {
   removeListField = (field, k) => {
     const { form } = this.props;
     const keys = form.getFieldValue(`list-item-${field}`);
-    console.info(`removeListField___list-item-${field}`, );
+    console.info(`removeListField___list-item-${field}`);
     console.info('removeListField_', field, 'k', k, 'keys', keys);
     if (keys.length === 1) {
       return;

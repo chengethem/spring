@@ -1,0 +1,89 @@
+.tag {
+  margin: 0 auto;
+}
+
+.title {
+  color: #333;
+  font-size: 28px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 18px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+}
+
+.items {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.item {
+  width: 100%;
+  margin-bottom: 50px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.item-icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.icon-phone {
+  width: 32px;
+  height: 55px;
+  background-image: url('../../../assets/icon/phone.png');
+}
+
+.icon-voice {
+  width: 39px;
+  height: 62px;
+  background-image: url('../../../assets/icon/voice.png');
+}
+
+.icon-disc {
+  width: 60px;
+  height: 60px;
+  background-image: url('../../../assets/icon/disc.png');
+}
+
+@media (device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .icon-phone {
+    background-image: url('../../../assets/icon/phone_2x.png');
+  }
+  .icon-voice {
+    background-image: url('../../../assets/icon/voice_2x.png');
+  }
+  .icon-disc {
+    background-image: url('../../../assets/icon/disc_2x.png');
+  }
+}
+
+.item-icon {
+  margin: 0 auto;
+}
+
+.item-title,
+.item-desc {
+  text-align: center;
+}
+
+.item-title {
+  color: #333;
+  font-size: 18px;
+  padding: 20px 0;
+}
+
+.item-desc {
+  font-size: 16px;
+  color: #999;
+  line-height: 24px;
+}
