@@ -35,8 +35,11 @@ class NavigationBar extends Component {
   render() {
     const { location, navs, fixed } = this.props;
     const { navigationBarFixed, hideMenu } = this.state;
+    let cur = '';
     const items = (navs || []).map((item, idx) => {
-      const item_class = location.pathname.indexOf(item.link) != -1 ? `${styles.item} ${styles.cur}` : styles.item;
+      const path = location.pathname.split('/')[1];
+      const link = item.link.split('/')[1];
+      const item_class = link.indexOf(path) != -1 || path == item.link ? `${styles.item} ${styles.cur}` : styles.item;
       return (
         <a href={item.link} key={idx} className={item_class}>{item.title}</a>
       );
@@ -45,9 +48,6 @@ class NavigationBar extends Component {
     const list_icon_style = hideMenu ? `${styles["list-icon"]}` : `${styles["list-icon"]} ${styles["list-icon--close"]}`;
     const items_style = hideMenu ? `${styles["items"]}` : `${styles["items"]} ${styles["show"]}`;
     let navigatorStyle = navigationBarFixed || !hideMenu ? `${styles.wraper} ${styles.fixed}` : `${styles.wraper} ${styles.fixed}`;
-    // if (fixed) {
-    //   navigatorStyle = `${styles.wraper} ${styles.static}`;
-    // }
 
     return (
       <div className={navigatorStyle} ref={this.navigation}>
