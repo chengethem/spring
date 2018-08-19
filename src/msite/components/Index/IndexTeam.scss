@@ -1,8 +1,15 @@
+.container {
+  padding-bottom: 0;
+}
+
 .item {
   display: inline-block;
   position: relative;
   margin-top: 40px;
   vertical-align: top;
+  border: 1px solid #f4f4f4;
+  width: 100%;
+  border-radius: 3px;
 }
 
 .item:first-child {
@@ -11,14 +18,15 @@
 
 .team-item {
   display: inline-block;
-  width: 50%;
+  width: 100%;
   position: relative;
   vertical-align: top;
+  margin-top: 12px;
 }
 
 .item-avatar {
-  width: 110px;
-  height: 110px;
+  width: 120px;
+  height: 113px;
   border-radius: 3px;
   float: left;
   background-size: cover;
@@ -26,16 +34,24 @@
 }
 
 .team-item-avatar {
-  width: 110px;
-  height: 110px;
+  width: 100%;
+  height: 330px;
   border-radius: 5px;
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0 auto;
 }
 
+.team-item:last-child {
+  .team-item-avatar {
+    background-position: 94%;
+  }
+}
+
 .item-text {
   margin-left: 130px;
+  text-align: justify;
+  padding-right: .4em;
 }
 
 .item-name {
@@ -49,6 +65,7 @@
   justify-content: left;
   align-items: center;
   justify-content: center;
+  margin: 7px 0 2px;
 }
 
 .item-name--text {
@@ -70,12 +87,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   /* autoprefixer: off */
   -webkit-box-orient: vertical;
   /* autoprefixer: on */
   white-space: pre-wrap;
+  margin-bottom: 0;
 }
 
 .team-desc {

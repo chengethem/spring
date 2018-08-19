@@ -33,7 +33,7 @@ class NavigationBar extends Component {
     const items = (navs || []).map((item, idx) => {
       const path = location.pathname.split('/')[1];
       const link = item.link.split('/')[1];
-      const item_class = link.indexOf(path) != -1 || path == item.link ? `${styles.item} ${styles.cur}` : styles.item;
+      const item_class = path && link.indexOf(path) != -1 || path == link ? `${styles.item} ${styles.cur}` : styles.item;
       return (
         <a href={item.link} key={idx} className={item_class}>{item.title}</a>
       );

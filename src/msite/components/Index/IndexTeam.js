@@ -41,7 +41,7 @@ class IndexTeam extends Component {
       );
     });
     return (
-      <div className={commmonStyles.container} >
+      <div className={`${commmonStyles.container} ${styles.container}`}>
         <div className={commmonStyles.tag}></div>
         <div className={commmonStyles.title}>核心团队</div>
         <div className={styles.list}>

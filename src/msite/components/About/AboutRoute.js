@@ -14,7 +14,7 @@ class AboutRoute extends Component {
             <ul className={styles.routes}>
               <li className={styles.route}>Spring Media (清泉工作室)成立于一九九七年(香港)，是一家提供专业影视制作服务的公司。</li>
               <li className={styles.route}>于 2006 年开办上海分公司，专门从事广告、音频制作、影视剧配音、音频缩混、游戏语音制作、翻译、音乐制作等。</li>
-              <li className={styles.route}>Spring Media 拥有四间不同规格的专业录音棚及音控室，一流的软硬件设备及经验丰富的工作团队。</li>
+              <li className={styles.route}>目前 Spring Media 拥有四间不同规格的专业录音棚及音控室，一流的软硬件设备及经验丰富的工作团队。</li>
             </ul>
           </div>
           <div className={styles['content-right']}>
