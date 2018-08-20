@@ -31,7 +31,8 @@
     "koa-router": "^7.2.1",
     "koa-static": "^4.0.1",
     "koa-views": "^6.0.2",
-    "mongoose": "^5.0.15"
+    "mongoose": "^5.0.15",
+    "react-fastclick": "^3.0.2"
   },
   "devDependencies": {
     "antd": "3.0.1",

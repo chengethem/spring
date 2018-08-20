@@ -4,6 +4,8 @@ import createLoading from 'dva-loading';
 import { message } from 'antd';
 import './index.scss';
 import router from './router';
+import initReactFastclick from 'react-fastclick';
+initReactFastclick();
 
 const ERROR_MSG_DURATION = 3; // 3 秒
 
