@@ -11,6 +11,9 @@ class CompositionInfo extends Component {
     };
     const { info, clips } = composition;
     const info_el = info.map((info, info_index) => {
+      if (!info.content) {
+        return '';
+      }
       return (
         <div className={styles.info} key={info_index}>
           <div className={styles.label}>{info.info_caption}</div>

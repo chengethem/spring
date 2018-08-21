@@ -11,6 +11,10 @@ class IndexTeam extends Component {
         'backgroundImage': `url(${item.avatar})`
       };
       const link = item.homepage ? item.homepage : `/dubber?id=${item.id}`;
+      let pre_el = '';
+      if (idx == 0) {
+        pre_el = <pre className={`${styles['team-desc']}`}>{item.desc}</pre>;
+      }
       return (
         <a className={styles.item} href={link} key={idx} target="_blank">
           <div className={styles['item-avatar']} src={item.avatar} alt={item.name} style={avatarStyle}></div>
@@ -18,6 +22,7 @@ class IndexTeam extends Component {
             <div className={styles['item-name']}>
               <div className={styles['item-name--text']}>{item.name}</div>
               <div className={styles['item-title']}>{item.job}</div>
+              {pre_el}
             </div>
           </div>
         </a>
