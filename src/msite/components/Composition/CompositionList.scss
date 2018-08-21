@@ -14,7 +14,6 @@
   background: #fff;
   transition: 400ms;
   position: relative;
-  border-radius: 5px;
   display: block;
   margin-bottom: 20px;
   overflow: hidden;
@@ -31,7 +30,7 @@
 }
 
 .cover {
-  height: 220px;
+  height: 250px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -56,6 +55,7 @@
   color: #666;
   font-size: 16px;
   line-height: 1.6em;
+  text-align: justify;
 }
 
 .icon {

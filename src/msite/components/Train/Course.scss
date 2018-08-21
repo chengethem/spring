@@ -3,23 +3,24 @@
 }
 
 .co-title {
-  font-size: 16px;
+  font-size: 14px;
   color: #333;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 
 .title {
-  font-size: 28px;
+  font-size: 23px;
   color: #333;
 }
 
 .sub-title {
-  font-size: 16px;
+  font-size: 14px;
   color: #999;
 }
 
 .titles {
   border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 10px;
 }
 
 .mod {
@@ -56,7 +57,11 @@
 }
 
 .dubber-title {
-  margin-left: 82px;
+  margin-left: 80px;
+  min-height: 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .dubber-name {
@@ -143,17 +148,17 @@
 .state {
   position: relative;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .state-label {
-  font-size: 16px;
+  font-size: 14px;
   color: #666;
   float: left;
 }
 
 .state-content {
-  font-size: 16px;
+  font-size: 14px;
   color: #333;
   margin-left: 80px;
 }
@@ -161,13 +166,13 @@
 .mod-p-title {
   font-size: 16px;
   color: #666;
-  margin-top: 20px;
 }
 
 .mod-p-content {
-  font-size: 16px;
+  font-size: 13px;
   line-height: 1.6em;
   color: #999;
   margin: 6px 0 20px;
   white-space: pre-wrap;
+  text-align: justify;
 }

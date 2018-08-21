@@ -19,7 +19,6 @@ class IndexTeam extends Component {
               <div className={styles['item-name--text']}>{item.name}</div>
               <div className={styles['item-title']}>{item.job}</div>
             </div>
-            <pre className={styles['item-desc']}>{item.desc}</pre>
           </div>
         </a>
       );

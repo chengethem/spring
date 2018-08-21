@@ -31,7 +31,6 @@
   background-repeat: no-repeat;
   transform: scale(.5);
   position: absolute;
-  left: 0;
 }
 
 @media (device-pixel-ratio: 2),
@@ -51,6 +50,7 @@
   justify-content: center;
   align-items: center;
   transition: 400ms;
+  height: 56px;
 }
 
 .items {
@@ -89,6 +89,8 @@
   flex-direction: column;
   height: 16px;
   opacity: .8;
+  position: absolute;
+  left: 30px;
   .list-icon-0,
   .list-icon-1,
   .list-icon-2 {

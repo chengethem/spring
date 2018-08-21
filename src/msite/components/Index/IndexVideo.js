@@ -10,9 +10,11 @@ class IndexVideo extends Component {
       return '';
     }
     video = video[0];
+    const bg_style = {
+      backgroundImage:`url(${video.cover})`
+    };
     return (
-      <a target='_blank' href={video.link} className={styles.container}>
-        <img src={video.cover} alt="" />
+      <a target='_blank' href={video.link} style={bg_style} className={styles.container}>
         <div className={styles.button}></div>
       </a>
     );

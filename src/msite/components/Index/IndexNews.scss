@@ -32,7 +32,7 @@ $item-height:160px;
 }
 
 .item-title {
-  font-size: 18px;
+  font-size: 16px;
   color: #333;
   word-wrap: break-word;
   /* autoprefixer: off */
@@ -41,7 +41,7 @@ $item-height:160px;
   -webkit-line-clamp: 2;
   display: -webkit-box;
   overflow: hidden;
-  padding: 5px 0;
+  padding: 10px 0;
   line-height: 1.6em;
 }
 
@@ -54,7 +54,8 @@ $item-height:160px;
   /* autoprefixer: off */
   -webkit-box-orient: vertical;
   /* autoprefixer: on */
-  font-size: 16px;
+  font-size: 14px;
+  text-align: justify;
   line-height: 22px;
   color: #666;
 }

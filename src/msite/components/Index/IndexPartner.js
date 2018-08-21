@@ -27,7 +27,7 @@ class IndexPartner extends Component {
     return (
       <div className={commmonStyles.container}>
         <div className={commmonStyles.tag}></div>
-        <div className={commmonStyles.title}>这些品牌<br />与我们合作</div>
+        <div className={commmonStyles.title}>合作伙伴</div>
         <div className={styles.list}>
           {item}
         </div>
