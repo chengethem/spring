@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import styles from './CompositionList.scss';
 import icon from '../../../assets/icon/time.png';
 import cover from '../../../assets/demo/cover1_2x.jpg';
+import { Link, browserHistory } from 'dva/router';
 
 class CompositionList extends Component {
+  
   render() {
     const TABS = {
       animation: '动画',
@@ -35,7 +37,9 @@ class CompositionList extends Component {
       return (
         <a href={composition.nolink ? 'javascript:;' : composition.homepage || `/composition?index=${composition_index}`} target={composition.homepage ? '_blank' : ''} className={styles.item} key={index}>
           {/* <img className={styles.cover} src={composition.cover} alt={composition.title} /> */}
-          <div className={styles.cover} style={cover_style}></div>
+          <div className={styles.cover}>
+            <img className={styles['cover-pic']} src={composition.cover_l || composition.cover} />
+          </div>
           <div className={styles.content}>
             <div className={styles.title}>{composition.name}</div>
             <pre className={styles.desc}>{composition.desc}</pre>

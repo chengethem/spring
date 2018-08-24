@@ -46,6 +46,7 @@ class NavigationBar extends Component {
     const _this = this;
     const list_icon_style = hideMenu ? `${styles["list-icon"]}` : `${styles["list-icon"]} ${styles["list-icon--close"]}`;
     const items_style = hideMenu ? `${styles["items"]}` : `${styles["items"]} ${styles["show"]}`;
+    const mask_style = hideMenu ? `${styles["nav-mask"]}` : `${styles["nav-mask"]} ${styles["show"]}`;
     let navigatorStyle = navigationBarFixed || !hideMenu ? `${styles.wraper} ${styles.fixed}` : `${styles.wraper} ${styles.fixed}`;
 
     return (
@@ -61,6 +62,7 @@ class NavigationBar extends Component {
             {items}
           </div>
         </div>
+        <div onClick={_this.toogleMenu.bind(this)} className={mask_style}></div>
       </div>
     );
   }

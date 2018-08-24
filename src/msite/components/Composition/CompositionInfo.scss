@@ -105,9 +105,12 @@
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(#000, 0);
+  background: rgba(#000, .3);
   position: absolute;
   transition: 400ms;
+  .icon-play {
+    opacity: 1;
+  }
 }
 
 .item-pic:after {
@@ -127,18 +130,9 @@
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
-  opacity: .3;
+  opacity: .7;
   transition: 400ms;
   z-index: 10;
-}
-
-.item-cover:hover {
-  &::after {
-    background: rgba(#000, .3);
-  }
-  .icon-play {
-    opacity: 1;
-  }
 }
 
 .item-content {

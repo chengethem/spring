@@ -11,7 +11,9 @@ class IndexNews extends Component {
       };
       return (
         <a className={styles.item} href={item.link} key={idx} target="_blank">
-          <div className={styles['item-cover']} style={bg_item}></div>
+          <div className={styles['item-cover']} style={bg_item}>
+            <img src={item.thumb} className={styles['item-cover-pic']} />
+          </div>
           <div className={styles['item-text']}>
             <div className={styles['item-title']}>{item.title}</div>
             <div className={styles['item-desc']}>{item.description}</div>

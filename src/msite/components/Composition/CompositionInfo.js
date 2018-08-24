@@ -5,7 +5,6 @@ import styles from './CompositionInfo.scss';
 class CompositionInfo extends Component {
   render() {
     const { composition } = this.props;
-    console.info('composition__', composition);
     const cover_style = {
       backgroundImage: `url(${composition.cover})`
     };

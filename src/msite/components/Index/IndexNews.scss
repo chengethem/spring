@@ -18,10 +18,13 @@ $item-height:160px;
 
 .item-cover {
   width: 100%;
-  height: $item-height;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.item-cover-pic {
+  width: 100%;
 }
 
 .item-text {

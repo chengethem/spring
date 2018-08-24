@@ -9,6 +9,7 @@ import CompositionTabBar from '../components/Composition/CompositionTabBar';
 import CompositionList from '../components/Composition/CompositionList';
 import Footer from '../components/Footer';
 import querystring from 'querystring';
+import createHistory from 'history/createBrowserHistory';
 
 function findByName(name) {
   return (item) => {
@@ -23,7 +24,16 @@ function getProperty(obj, key) {
   return obj[key] || '';
 }
 class CompositionsPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { tab: '' };
+  }
+  changeTab(tab) {
+    this.setState({ tab });
+    createHistory().push(`/compositions?category=${tab}`);
+  }
   render() {
+    const _this = this;
     const { location, list, loading } = this.props;
     const navs = getProperty(list, 'navigation').value;
     const compositions = getProperty(list, 'compositions').value;
@@ -52,12 +62,12 @@ class CompositionsPage extends Component {
       }
       return tab;
     });
-
+    console.info('_this.state.tab_', _this.state.tab);
     const sections = [
       <NavigationBar fixed={true} location={location} navs={navs} />,
       <CompositionBanner bg={CompositionBannerBg} title='我们的配音作品集' />,
-      <CompositionTabBar tabs={ordered_tabs} current_category={query.category} />,
-      <CompositionList compositions={compositions} current_category={query.category} />,
+      <CompositionTabBar tabs={ordered_tabs} changeTab={_this.changeTab} current_category={_this.state.tab || query.category} />,
+      <CompositionList compositions={compositions} current_category={_this.state.tab || query.category} />,
       <Footer />
     ];
     return (
