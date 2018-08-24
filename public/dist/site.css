@@ -3011,6 +3011,13 @@ body,
   height: 100%;
   background-color: #fff; }
 
+html,
+body {
+  font-family: PingFangSC, MicrosoftYahei; }
+
+pre {
+  font-family: PingFangSC, MicrosoftYahei; }
+
 a:hover {
   color: #b2804d; }
 

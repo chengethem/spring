@@ -3014,7 +3014,8 @@ body,
 html,
 body {
   overflow-x: hidden;
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+  font-family: PingFangSC, MicrosoftYahei; }
 
 pre {
   font-family: PingFangSC, MicrosoftYahei; }
