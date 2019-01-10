@@ -8,7 +8,6 @@ router.get('/api/sections', (ctx, next) => {
   });
 });
 router.post('/api/sections', (ctx, next) => {
-  console.info('post/api/section__', ctx.request.body);
   const { section } = ctx.request.body;
   const { caption, name, isList, fields } = section;
   const new_section = Object.assign({}, { caption, name, isList, fields: [] });
@@ -40,7 +39,6 @@ router.post('/api/sections', (ctx, next) => {
 router.patch('/api/section', (ctx, next) => {
   const { section } = ctx.request.body;
   let sectionClone = Object.assign({}, section);
-  console.info('section__', section);
   let value = sectionClone.value;
   let change_order;
   let change_index;
@@ -54,7 +52,6 @@ router.patch('/api/section', (ctx, next) => {
         type: section[`type-${i}`],
         placeholder: section[`placeholder-${i}`]
       };
-      console.info('field__', field);
       if (section[`type-${i}`] === 'List') {
         const fieldList = section[`field-${i}-list`];
         field.list = [];
@@ -96,7 +93,6 @@ router.patch('/api/section', (ctx, next) => {
           });
         }
       });
-      console.info('sectionClone', item);
       return item;
     });
 

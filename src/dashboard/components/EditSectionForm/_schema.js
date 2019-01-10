@@ -102,7 +102,6 @@ class EditSectionSchema extends Component {
     if (!section) {
       return (<div>loading</div>);
     }
-    console.info('schema_section__', section);
     const fieldList = section && section.fields;
     const { getFieldDecorator, getFieldValue, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
     const formItemLayout = {

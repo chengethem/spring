@@ -4,7 +4,6 @@ import styles from './Banner.scss';
 class CompositionBanner extends Component {
   render() {
     const { title, bg, bg2x } = this.props;
-    console.info('CompositionBanner', bg, bg2x);
     const backgroundImage = window.devicePixelRatio === 2 ? bg2x : bg;
     return (
       <div style={{ backgroundImage: `url(${backgroundImage})` }} className={styles.container}>

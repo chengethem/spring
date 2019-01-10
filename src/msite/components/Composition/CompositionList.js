@@ -17,7 +17,6 @@ class CompositionList extends Component {
     };
     const categories = ['animation', 'stage', 'ad', 'movie'];
     const { current_category, compositions } = this.props;
-    console.info('**current_category', current_category);
     const show_compositions = compositions.filter(composition => {
       const composition_category = composition.category;
       return TABS[current_category || 'movie'] === composition_category;

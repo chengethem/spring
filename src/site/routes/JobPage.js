@@ -24,7 +24,6 @@ class JobPage extends Component {
     const pix = getProperty(list, 'slider').value;
     const job = getProperty(list, 'job').value;
     const slogan = getProperty(list, 'about_slogan').value;
-    console.info('job^^', job);
     const footer = job && job.length ? (<Footer />) : '';
 
     const sections = [

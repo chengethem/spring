@@ -11,7 +11,6 @@ class Recruit extends Component {
         <div className={`${commmonStyles.title} ${styles.none}`}>暂无岗位需求</div>
       </div>);
     }
-    console.info('recruit', jobs);
     const jobs_el = jobs.map((job, index) => {
       return (
         <div className={styles.mts}>

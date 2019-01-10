@@ -29,7 +29,6 @@ class Previous extends Component {
         </div>
       </div>
     ) : '';
-    console.info('download__', download);
     const pwd_el = download[0].password ? (
       <div className={styles['info-content']}>
         要参加我们的培训班？<br />

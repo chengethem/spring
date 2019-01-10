@@ -34,7 +34,6 @@ class Banner extends Component {
     this.previous = this.previous.bind(this)
   }
   next() {
-    console.info('Slider__', this.slider);
     this.slider.innerSlider.slickNext()
   }
   previous() {

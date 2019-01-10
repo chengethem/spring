@@ -5,7 +5,6 @@ import styles from '../Index/IndexBanner.scss';
 class IndexBanner extends Component {
   render() {
     let { slogan } = this.props;
-    console.info('slogan__', slogan);
     if (!slogan || slogan.length < 1) {
       return '';
     }

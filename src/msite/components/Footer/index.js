@@ -15,7 +15,6 @@ class Footer extends Component {
   }
   toggleQR() {
     const isShow = this.state.show || false;
-    console.info('toggleQR__!', isShow, !isShow);
     this.setState({
       show: !isShow
     });
